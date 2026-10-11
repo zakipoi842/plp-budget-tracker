@@ -1,145 +1,322 @@
-# My Budget Tracker
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
 
-A Personal Budget & Expense Tracker built step-by-step across the PLP program. This is the Week 3 version, focused on visual identity — a cohesive color palette, Google Fonts typography, polished table and form styling, and intentional use of the CSS box model.
+:root {
+  --primary: #4F46E5;
+  --primary-dark: #3730A3;
+  --primary-soft: #EEF2FF;
+  --accent: #F59E0B;
 
-## Built with
+  --bg: #F9FAFB;
+  --surface: #FFFFFF;
+  --stripe: #F3F4F6;
 
-- HTML5 for semantic structure, tables, forms, and multimedia
-- CSS3 for custom properties, advanced selectors, and box model layout
-- Google Fonts: Poppins for headings, Inter for body text
+  --text: #111827;
+  --text-muted: #6B7280;
+  --border: #E5E7EB;
 
-## Files
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
 
-| File | Purpose |
-| --- | --- |
-| index.html | Page structure — header, form, table, help section, video |
-| style.css | All styling — design tokens, typography, table and form styling |
-| README.md | Project documentation |
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
 
-## Visual identity
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
 
-### Color palette
+/* ============================================================
+   BASE
+   ============================================================ */
 
-Defined as CSS custom properties under `:root` in `style.css` so the whole design can be retuned from one place.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-| Token | Value | Used for |
-| --- | --- | --- |
-| --primary | #4F46E5 | Headings, buttons, table header |
-| --primary-dark | #3730A3 | Button hover, emphasized text |
-| --primary-soft | #EEF2FF | Hover highlights, focus rings |
-| --bg | #F9FAFB | Page background |
-| --surface | #FFFFFF | Cards |
-| --stripe | #F3F4F6 | Alternating table rows |
-| --text | #111827 | Body text |
-| --text-muted | #6B7280 | Subtitle and helper text |
-| --border | #E5E7EB | Card and input borders |
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  margin: 0;
+  padding: 40px 20px 60px;
+}
 
-### Typography
+h1,
+h2 {
+  font-family: var(--font-heading);
+  color: var(--text);
+  margin: 0 0 8px 0;
+  line-height: 1.25;
+}
 
-- Headings: Poppins, weights 500–700, tight letter spacing
-- Body: Inter, weights 400–600, optimized for screen readability
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
 
-Both are loaded via Google Fonts link tags in the head of index.html.
+h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--primary);
+}
 
-Font rules:
+p {
+  margin: 0 0 8px 0;
+  color: var(--text-muted);
+}
 
-- h1: Poppins 700 at 2.25rem
-- h2: Poppins 600 at 1.35rem, colored with the primary token
-- Body, labels, inputs, table cells: Inter at various weights
+/* ============================================================
+   CARDS
+   ============================================================ */
 
-## What's on the page
+#page-header,
+.add-expense,
+.expenses-section {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  max-width: 780px;
+  margin: 0 auto 28px;
+  padding: 32px;
+}
 
-### 1. Page header card
+/* ============================================================
+   PAGE HEADER
+   ============================================================ */
 
-- Logo image with a circular frame
-- Main heading and subtitle
-- Treated as a white card with border, border-radius, padding, and a subtle shadow
+#page-header {
+  text-align: center;
+  padding: 40px 32px;
+}
 
-### 2. Add Expense card
+#page-header img {
+  display: block;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background-color: var(--primary-soft);
+  padding: 8px;
+}
 
-- Form with three labeled fields: Name, Amount, Category
-- Category is a select dropdown with five options
-- Inputs have padding, rounded corners, and a focus ring
-- Primary-colored Add Expense button with hover and active states
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-top: 4px;
+}
 
-### 3. Expenses table card
+/* ============================================================
+   FORM
+   ============================================================ */
 
-- Table with thead and tbody
-- Header row in primary color with uppercase labels
-- Alternating row colors using tbody tr:nth-child(even)
-- Row hover highlight
-- Amount column emphasized with heavier weight and darker tone
+.add-expense h2 {
+  margin-bottom: 20px;
+}
 
-### 4. Help section
+.input-group {
+  margin-bottom: 18px;
+}
 
-- Collapsible details and summary panel
-- Warm accent styling to distinguish it from the main cards
+label {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
 
-### 5. Video section
+input,
+select {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--surface);
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
 
-- YouTube iframe embed, responsive and rounded
+input::placeholder {
+  color: #9CA3AF;
+}
 
-## CSS Box Model in practice
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
 
-Every major section is treated as a card using the same pattern:
+#add-expense-btn {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 12px 22px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
 
-    background-color: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    max-width: 780px;
-    margin: 0 auto 28px;
-    padding: 32px;
+#add-expense-btn:hover {
+  background-color: var(--primary-dark);
+}
 
-- Margin separates each card vertically
-- Padding creates internal breathing room
-- Border and border-radius define the card shape
-- Box-shadow adds subtle elevation from the page background
+#add-expense-btn:active {
+  transform: translateY(1px);
+}
 
-## Responsive behavior
+/* ============================================================
+   TABLE
+   ============================================================ */
 
-A media query at max-width: 600px adjusts page padding, card padding, border radius, heading sizes, and table cell padding so the layout stays clean on mobile.
+.expenses-section h2 {
+  margin-bottom: 16px;
+}
 
-## CSS techniques used
+.table-wrapper {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
 
-### Custom properties
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
 
-All colors, fonts, radii, and shadows are stored as tokens in :root.
+thead th {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #ffffff;
+  background-color: var(--primary);
+  padding: 14px 16px;
+  border: none;
+}
 
-### Element selectors
+tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
 
-body, h1, h2, p, label, input, select, table
+tbody tr:last-child td {
+  border-bottom: none;
+}
 
-### Class selectors
+tbody tr:nth-child(even) {
+  background-color: var(--stripe);
+}
 
-.add-expense, .input-group, .help-section, .video-section, .subtitle, .table-wrapper, .expenses-section
+tbody tr:hover {
+  background-color: var(--primary-soft);
+  cursor: pointer;
+}
 
-### ID selectors
+tbody td:nth-child(2) {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
 
-#page-header, #expenses-list, #add-expense-btn
+/* ============================================================
+   HELP SECTION
+   ============================================================ */
 
-### Advanced selectors
+.help-section {
+  max-width: 780px;
+  margin: 0 auto 28px;
+  background-color: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+}
 
-- Descendant: .expenses-section h2
-- Direct child: .add-expense > form > .input-group
-- Positional: tbody tr:nth-child(even), tbody tr:last-child, tbody td:nth-child(2)
-- Negation: input:not([type="submit"])
-- Focus: input:focus, select:focus
-- Hover: tbody tr:hover, #add-expense-btn:hover
+.help-section summary {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: #92400E;
+  cursor: pointer;
+  font-size: 1rem;
+}
 
-## How to view it
+.help-section p {
+  margin-top: 12px;
+  color: #78350F;
+  font-size: 0.95rem;
+}
 
-1. Clone or download the repository
-2. Open index.html in any modern browser
-3. No build step, no dependencies
+/* ============================================================
+   VIDEO SECTION
+   ============================================================ */
 
-## What's coming next
+.video-section {
+  max-width: 780px;
+  margin: 0 auto;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 32px;
+  text-align: center;
+}
 
-- Week 4 and beyond: layout and responsive refinement
-- Week 6: JavaScript to make the form functional and render expenses dynamically
-- Week 7 and beyond: persistence with localStorage, editing and deleting expenses
+.video-section h2 {
+  margin-bottom: 20px;
+}
 
-## Author
+.video-section iframe {
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  border: 0;
+}
 
-Zakariye Ali Mursal
-PLP 2026
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px 12px 40px;
+  }
+
+  #page-header,
+  .add-expense,
+  .expenses-section,
+  .help-section,
+  .video-section {
+    padding: 22px;
+    border-radius: var(--radius-md);
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+}
