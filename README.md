@@ -1,123 +1,97 @@
-# My Budget Tracker
+# SpendWise — Budget Dashboard
 
-A Personal Budget & Expense Tracker built step-by-step across the PLP program. This is the Week 3 version, focused on visual identity — a cohesive color palette, Google Fonts typography, polished table and form styling, and intentional use of the CSS box model.
+A responsive dashboard shell for a personal finance app, built step-by-step across the PLP program. This is the Week 4 version, focused on layout with CSS Grid and Flexbox, a themed design system using CSS custom properties, responsive behavior, and subtle card micro-interactions.
 
 ## Built with
 
-- HTML5 for semantic structure, tables, forms, and multimedia
-- CSS3 for custom properties, advanced selectors, and box model layout
+- HTML5 for semantic structure
+- CSS Grid for the overall page layout
+- Flexbox for internal arrangement (sidebar, header, cards)
+- CSS custom properties for theming
 - Google Fonts: Poppins for headings, Inter for body text
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
-| index.html | Page structure — header, form, table, help section, video |
-| style.css | All styling — design tokens, typography, table and form styling |
+| index.html | Dashboard markup — sidebar, header, summary strip, category cards |
+| style.css | Layout, theming, responsive rules, and interactions |
 | README.md | Project documentation |
 
-## Visual identity
+## Layout architecture
 
-### Color palette
+### Page grid
 
-Defined as CSS custom properties under :root in style.css so the whole design can be retuned from one place.
+The whole dashboard is a single CSS Grid with named areas:
 
-| Token | Value | Used for |
-| --- | --- | --- |
-| --primary | #4F46E5 | Headings, buttons, table header |
-| --primary-dark | #3730A3 | Button hover, emphasized text |
-| --primary-soft | #EEF2FF | Hover highlights, focus rings |
-| --bg | #F9FAFB | Page background |
-| --surface | #FFFFFF | Cards |
-| --stripe | #F3F4F6 | Alternating table rows |
-| --text | #111827 | Body text |
-| --text-muted | #6B7280 | Subtitle and helper text |
-| --border | #E5E7EB | Card and input borders |
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar main";
 
-### Typography
+- Sidebar occupies the left column across both rows
+- Header sits at the top of the right column
+- Main content fills the rest
 
-- Headings: Poppins (weights 500 to 700)
-- Body: Inter (weights 400 to 600)
+### Flexbox inside sections
 
-Both are loaded via Google Fonts link tags in the head of index.html.
+- Sidebar nav uses flex column for the menu items
+- Topbar uses flex with space-between to separate the title and actions
+- Each card uses flex column to stack its head, body, and progress bar
+- Summary strip uses flex-wrap so items collapse gracefully
 
-## What's on the page
+## Theming with custom properties
 
-### 1. Page header card
+All colors, fonts, radii, shadows, and easing are declared once on :root. Every component references those tokens, so retheming is a single-file change.
 
-- Logo image with a circular frame
-- Main heading and subtitle
-- White card with border, border-radius, padding, and a subtle shadow
+Key tokens:
 
-### 2. Add Expense card
+- --brand: primary brand color used on buttons, active nav, card bars
+- --accent: accent color for future highlights
+- --bg, --surface, --surface-alt: page and container backgrounds
+- --text, --text-muted: primary and secondary text colors
+- --border, --brand-soft: subtle separators and hover surfaces
+- --radius-sm/md/lg, --shadow-sm/md/lg: shape and elevation tokens
 
-- Form with three labeled fields: Name, Amount, Category
-- Category is a select dropdown with five options
-- Inputs have padding, rounded corners, and a focus ring
-- Primary-colored Add Expense button with hover and active states
+### Dark theme (stretch goal)
 
-### 3. Expenses table card
-
-- Table with thead and tbody
-- Header row in primary color with uppercase labels
-- Alternating row colors using tbody tr:nth-child(even)
-- Row hover highlight
-- Amount column emphasized with heavier weight and darker tone
-
-### 4. Help section
-
-- Collapsible details and summary panel
-- Warm accent styling to distinguish it from the main cards
-
-### 5. Video section
-
-- YouTube iframe embed, responsive and rounded
-
-## CSS Box Model in practice
-
-Every major section is a card using the same pattern:
-
-- margin separates each card vertically
-- padding creates internal breathing room
-- border and border-radius define the card shape
-- box-shadow adds subtle elevation from the page background
+A @media (prefers-color-scheme: dark) block overrides only the :root tokens — no component rules change. The entire dashboard adapts automatically when the user's OS is in dark mode.
 
 ## Responsive behavior
 
-A media query at max-width 600px adjusts page padding, card padding, border radius, heading sizes, and table cell padding for mobile.
+A media query at 768px collapses the layout:
 
-## CSS techniques used
+- Grid switches to single column
+- Sidebar moves to the top and its nav becomes horizontal
+- Topbar stacks its title and actions
+- Summary items stack vertically
+- Cards flow into a single column
 
-### Custom properties
+Verify with the browser DevTools device toolbar (toggle device emulation).
 
-Colors, fonts, radii, and shadows are stored as tokens in :root.
+## Card micro-interactions
 
-### Element selectors
+Each card supports both mouse and keyboard:
 
-body, h1, h2, p, label, input, select, table
+- transition duration is 220ms, under the 250ms cap
+- On :hover and :focus-visible, cards use transform: translateY(-4px) plus an elevated box-shadow
+- :focus-visible also adds a soft ring for keyboard users
+- Cards have tabindex="0" so they are reachable by keyboard
 
-### Class selectors
+## What's on the page
 
-.add-expense, .input-group, .help-section, .video-section, .subtitle, .table-wrapper, .expenses-section
-
-### ID selectors
-
-#page-header, #expenses-list, #add-expense-btn
-
-### Advanced selectors
-
-- Descendant: .expenses-section h2
-- Direct child: .add-expense > form > .input-group
-- Positional: tbody tr:nth-child(even), tbody tr:last-child, tbody td:nth-child(2)
-- Negation: input:not([type="submit"])
-- Focus: input:focus, select:focus
-- Hover: tbody tr:hover, #add-expense-btn:hover
+- Sidebar with brand mark and six nav items
+- Topbar with title, search field, notification button, and avatar
+- Summary strip with three key figures
+- Grid of six category cards, each showing an icon, amount, budget meta, and a progress bar
 
 ## How to view it
 
 1. Clone or download the repository
 2. Open index.html in any modern browser
-3. No build step, no dependencies
+3. Toggle dark mode by changing your OS appearance setting
+4. Resize the window or use DevTools device emulation to test the responsive layout
 
 ## Author
 
