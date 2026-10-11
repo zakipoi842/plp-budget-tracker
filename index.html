@@ -8,36 +8,112 @@
 </head>
 <body>
 
-  <!-- ===== Part 1: Page structure ===== -->
+  <!-- ===== Part 1: Header with logo ===== -->
   <header id="page-header">
+    <img src="https://via.placeholder.com/60" alt="Budget Tracker logo" width="60" />
     <h1>My Budget Tracker</h1>
     <p class="subtitle">Track your income and expenses in one place.</p>
   </header>
 
-  <!-- ===== Part 2: Add Expense section ===== -->
+  <!-- ===== Part 2: Add Expense form ===== -->
   <section class="add-expense">
     <h2>Add Expense</h2>
 
-    <div class="input-group">
-      <label for="expense-name">Expense Name</label>
-      <input type="text" id="expense-name" placeholder="e.g. Groceries" />
-    </div>
+    <form>
+      <div class="input-group">
+        <label for="expense-name">Expense Name</label>
+        <input type="text" id="expense-name" name="expense-name" placeholder="e.g. Groceries" />
+      </div>
 
-    <div class="input-group">
-      <label for="expense-amount">Amount</label>
-      <input type="number" id="expense-amount" placeholder="e.g. 25.00" />
-    </div>
+      <div class="input-group">
+        <label for="expense-amount">Amount</label>
+        <input type="number" id="expense-amount" name="expense-amount" placeholder="e.g. 25.00" />
+      </div>
 
-    <div class="input-group">
-      <label for="expense-category">Category</label>
-      <input type="text" id="expense-category" placeholder="e.g. Food" />
-    </div>
+      <div class="input-group">
+        <label for="expense-category">Category</label>
+        <select id="expense-category" name="expense-category">
+          <option value="">-- Select a category --</option>
+          <option value="food">Food</option>
+          <option value="transport">Transport</option>
+          <option value="rent">Rent</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <button type="button" id="add-expense-btn">Add Expense</button>
+    </form>
   </section>
 
-  <!-- ===== Part 3: Your Expenses placeholder ===== -->
-  <section id="expenses-list">
+  <!-- ===== Part 3: Expenses table ===== -->
+  <section id="expenses-list" class="expenses-section">
     <h2>Your Expenses</h2>
-    <p class="placeholder-text">No expenses yet.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Groceries</td>
+          <td>KSh 2,500</td>
+          <td>Food</td>
+          <td>2026-10-01</td>
+        </tr>
+        <tr>
+          <td>Matatu fare</td>
+          <td>KSh 200</td>
+          <td>Transport</td>
+          <td>2026-10-02</td>
+        </tr>
+        <tr>
+          <td>Monthly rent</td>
+          <td>KSh 15,000</td>
+          <td>Rent</td>
+          <td>2026-10-03</td>
+        </tr>
+        <tr>
+          <td>Cinema ticket</td>
+          <td>KSh 800</td>
+          <td>Entertainment</td>
+          <td>2026-10-05</td>
+        </tr>
+        <tr>
+          <td>Internet bundle</td>
+          <td>KSh 1,000</td>
+          <td>Other</td>
+          <td>2026-10-07</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== Part 4a: Collapsible help section ===== -->
+  <section class="help-section">
+    <details>
+      <summary>How to use this tracker</summary>
+      <p>Enter the expense name, amount, and pick a category from the dropdown. Click "Add Expense" to save it. Your saved expenses will appear in the table above (functionality coming in Week 6).</p>
+    </details>
+  </section>
+
+  <!-- ===== Part 3b: Multimedia — YouTube embed ===== -->
+  <section class="video-section">
+    <h2>Budgeting Tip of the Week</h2>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/HQzoZfc3GwQ"
+      title="Budgeting tips video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </section>
 
 </body>

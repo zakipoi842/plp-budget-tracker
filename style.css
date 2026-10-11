@@ -33,13 +33,37 @@ label {
   font-size: 0.9rem;
 }
 
-input {
+input,
+select {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
   box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid #cfd8dc;
+}
+
+thead th {
+  background-color: #1f3a5f;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f1f5f9;
 }
 
 /* ============================================
@@ -51,9 +75,15 @@ input {
   margin-bottom: 30px;
 }
 
+#page-header img {
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 8px;
+}
+
 #expenses-list {
   background-color: #ffffff;
-  border: 2px dashed #b0bec5;
+  border: 1px solid #cfd8dc;
   border-radius: 8px;
   padding: 20px;
   margin-top: 30px;
@@ -81,8 +111,91 @@ input {
   margin-bottom: 15px;
 }
 
-.placeholder-text {
-  color: #90a4ae;
-  font-style: italic;
+.help-section {
+  max-width: 700px;
+  margin: 30px auto 0;
+  background-color: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 8px;
+  padding: 15px 20px;
+}
+
+.help-section summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #795548;
+}
+
+.help-section p {
+  margin-top: 10px;
+  color: #5d4037;
+}
+
+.video-section {
+  max-width: 700px;
+  margin: 30px auto 0;
   text-align: center;
+}
+
+.video-section iframe {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* ============================================
+   BUTTON
+   ============================================ */
+
+#add-expense-btn {
+  display: inline-block;
+  background-color: #1f3a5f;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#add-expense-btn:hover {
+  background-color: #294a75;
+}
+
+/* ============================================
+   ADVANCED SELECTORS (Part 5 requirement)
+   ============================================ */
+
+/* 1. Descendant selector */
+.expenses-section td {
+  font-size: 0.95rem;
+}
+
+/* 2. Direct child selector */
+.add-expense > form > .input-group {
+  margin-bottom: 18px;
+}
+
+/* 3. Positional pseudo-class (already used above for tbody tr:nth-child(even), plus this one) */
+tbody tr:first-child td {
+  font-weight: 600;
+}
+
+/* 4. Negation pseudo-class */
+input:not([type="submit"]) {
+  background-color: #fafafa;
+}
+
+/* 5. Focus state for inputs */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #1f3a5f;
+  box-shadow: 0 0 0 2px rgba(31, 58, 95, 0.15);
+}
+
+/* 6. Hover state for table rows */
+tbody tr:hover {
+  background-color: #e3f2fd;
+  cursor: pointer;
 }
