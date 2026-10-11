@@ -4,18 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Budget Tracker</title>
+
+  <!-- Google Fonts: Poppins (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ===== Part 1: Header with logo ===== -->
+  <!-- ===== Page header card ===== -->
   <header id="page-header">
     <img src="https://via.placeholder.com/60" alt="Budget Tracker logo" width="60" />
     <h1>My Budget Tracker</h1>
     <p class="subtitle">Track your income and expenses in one place.</p>
   </header>
 
-  <!-- ===== Part 2: Add Expense form ===== -->
+  <!-- ===== Add Expense card ===== -->
   <section class="add-expense">
     <h2>Add Expense</h2>
 
@@ -27,7 +36,7 @@
 
       <div class="input-group">
         <label for="expense-amount">Amount</label>
-        <input type="number" id="expense-amount" name="expense-amount" placeholder="e.g. 25.00" />
+        <input type="number" id="expense-amount" name="expense-amount" placeholder="e.g. 2500" />
       </div>
 
       <div class="input-group">
@@ -46,55 +55,57 @@
     </form>
   </section>
 
-  <!-- ===== Part 3: Expenses table ===== -->
+  <!-- ===== Expenses table card ===== -->
   <section id="expenses-list" class="expenses-section">
     <h2>Your Expenses</h2>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Groceries</td>
-          <td>KSh 2,500</td>
-          <td>Food</td>
-          <td>2026-10-01</td>
-        </tr>
-        <tr>
-          <td>Matatu fare</td>
-          <td>KSh 200</td>
-          <td>Transport</td>
-          <td>2026-10-02</td>
-        </tr>
-        <tr>
-          <td>Monthly rent</td>
-          <td>KSh 15,000</td>
-          <td>Rent</td>
-          <td>2026-10-03</td>
-        </tr>
-        <tr>
-          <td>Cinema ticket</td>
-          <td>KSh 800</td>
-          <td>Entertainment</td>
-          <td>2026-10-05</td>
-        </tr>
-        <tr>
-          <td>Internet bundle</td>
-          <td>KSh 1,000</td>
-          <td>Other</td>
-          <td>2026-10-07</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Groceries</td>
+            <td>KSh 2,500</td>
+            <td>Food</td>
+            <td>2026-10-01</td>
+          </tr>
+          <tr>
+            <td>Matatu fare</td>
+            <td>KSh 200</td>
+            <td>Transport</td>
+            <td>2026-10-02</td>
+          </tr>
+          <tr>
+            <td>Monthly rent</td>
+            <td>KSh 15,000</td>
+            <td>Rent</td>
+            <td>2026-10-03</td>
+          </tr>
+          <tr>
+            <td>Cinema ticket</td>
+            <td>KSh 800</td>
+            <td>Entertainment</td>
+            <td>2026-10-05</td>
+          </tr>
+          <tr>
+            <td>Internet bundle</td>
+            <td>KSh 1,000</td>
+            <td>Other</td>
+            <td>2026-10-07</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <!-- ===== Part 4a: Collapsible help section ===== -->
+  <!-- ===== Help section ===== -->
   <section class="help-section">
     <details>
       <summary>How to use this tracker</summary>
@@ -102,7 +113,7 @@
     </details>
   </section>
 
-  <!-- ===== Part 3b: Multimedia — YouTube embed ===== -->
+  <!-- ===== Video section ===== -->
   <section class="video-section">
     <h2>Budgeting Tip of the Week</h2>
     <iframe

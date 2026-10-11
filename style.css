@@ -1,201 +1,145 @@
-/* ============================================
-   ELEMENT SELECTORS — base styling for tags
-   ============================================ */
+# My Budget Tracker
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f6f8;
-  color: #333;
-  margin: 0;
-  padding: 20px;
-  line-height: 1.5;
-}
+A Personal Budget & Expense Tracker built step-by-step across the PLP program. This is the Week 3 version, focused on visual identity — a cohesive color palette, Google Fonts typography, polished table and form styling, and intentional use of the CSS box model.
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 0.25rem;
-}
+## Built with
 
-h2 {
-  font-size: 1.25rem;
-  margin-top: 0;
-  color: #1f3a5f;
-}
+- HTML5 for semantic structure, tables, forms, and multimedia
+- CSS3 for custom properties, advanced selectors, and box model layout
+- Google Fonts: Poppins for headings, Inter for body text
 
-p {
-  margin: 0.5rem 0;
-}
+## Files
 
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 4px;
-  font-size: 0.9rem;
-}
+| File | Purpose |
+| --- | --- |
+| index.html | Page structure — header, form, table, help section, video |
+| style.css | All styling — design tokens, typography, table and form styling |
+| README.md | Project documentation |
 
-input,
-select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
+## Visual identity
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
+### Color palette
 
-th,
-td {
-  padding: 10px 12px;
-  text-align: left;
-  border: 1px solid #cfd8dc;
-}
+Defined as CSS custom properties under `:root` in `style.css` so the whole design can be retuned from one place.
 
-thead th {
-  background-color: #1f3a5f;
-  color: #ffffff;
-  font-weight: bold;
-}
+| Token | Value | Used for |
+| --- | --- | --- |
+| --primary | #4F46E5 | Headings, buttons, table header |
+| --primary-dark | #3730A3 | Button hover, emphasized text |
+| --primary-soft | #EEF2FF | Hover highlights, focus rings |
+| --bg | #F9FAFB | Page background |
+| --surface | #FFFFFF | Cards |
+| --stripe | #F3F4F6 | Alternating table rows |
+| --text | #111827 | Body text |
+| --text-muted | #6B7280 | Subtitle and helper text |
+| --border | #E5E7EB | Card and input borders |
 
-tbody tr:nth-child(even) {
-  background-color: #f1f5f9;
-}
+### Typography
 
-/* ============================================
-   ID SELECTORS — unique sections
-   ============================================ */
+- Headings: Poppins, weights 500–700, tight letter spacing
+- Body: Inter, weights 400–600, optimized for screen readability
 
-#page-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
+Both are loaded via Google Fonts link tags in the head of index.html.
 
-#page-header img {
-  display: block;
-  margin: 0 auto 10px;
-  border-radius: 8px;
-}
+Font rules:
 
-#expenses-list {
-  background-color: #ffffff;
-  border: 1px solid #cfd8dc;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 30px;
-}
+- h1: Poppins 700 at 2.25rem
+- h2: Poppins 600 at 1.35rem, colored with the primary token
+- Body, labels, inputs, table cells: Inter at various weights
 
-/* ============================================
-   CLASS SELECTORS — reusable styles
-   ============================================ */
+## What's on the page
 
-.subtitle {
-  color: #607d8b;
-  font-style: italic;
-}
+### 1. Page header card
 
-.add-expense {
-  background-color: #e3f2fd;
-  border: 1px solid #90caf9;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 500px;
-  margin: 0 auto;
-}
+- Logo image with a circular frame
+- Main heading and subtitle
+- Treated as a white card with border, border-radius, padding, and a subtle shadow
 
-.input-group {
-  margin-bottom: 15px;
-}
+### 2. Add Expense card
 
-.help-section {
-  max-width: 700px;
-  margin: 30px auto 0;
-  background-color: #fff8e1;
-  border: 1px solid #ffe082;
-  border-radius: 8px;
-  padding: 15px 20px;
-}
+- Form with three labeled fields: Name, Amount, Category
+- Category is a select dropdown with five options
+- Inputs have padding, rounded corners, and a focus ring
+- Primary-colored Add Expense button with hover and active states
 
-.help-section summary {
-  cursor: pointer;
-  font-weight: bold;
-  color: #795548;
-}
+### 3. Expenses table card
 
-.help-section p {
-  margin-top: 10px;
-  color: #5d4037;
-}
+- Table with thead and tbody
+- Header row in primary color with uppercase labels
+- Alternating row colors using tbody tr:nth-child(even)
+- Row hover highlight
+- Amount column emphasized with heavier weight and darker tone
 
-.video-section {
-  max-width: 700px;
-  margin: 30px auto 0;
-  text-align: center;
-}
+### 4. Help section
 
-.video-section iframe {
-  max-width: 100%;
-  border-radius: 8px;
-}
+- Collapsible details and summary panel
+- Warm accent styling to distinguish it from the main cards
 
-/* ============================================
-   BUTTON
-   ============================================ */
+### 5. Video section
 
-#add-expense-btn {
-  display: inline-block;
-  background-color: #1f3a5f;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
+- YouTube iframe embed, responsive and rounded
 
-#add-expense-btn:hover {
-  background-color: #294a75;
-}
+## CSS Box Model in practice
 
-/* ============================================
-   ADVANCED SELECTORS (Part 5 requirement)
-   ============================================ */
+Every major section is treated as a card using the same pattern:
 
-/* 1. Descendant selector */
-.expenses-section td {
-  font-size: 0.95rem;
-}
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    max-width: 780px;
+    margin: 0 auto 28px;
+    padding: 32px;
 
-/* 2. Direct child selector */
-.add-expense > form > .input-group {
-  margin-bottom: 18px;
-}
+- Margin separates each card vertically
+- Padding creates internal breathing room
+- Border and border-radius define the card shape
+- Box-shadow adds subtle elevation from the page background
 
-/* 3. Positional pseudo-class (already used above for tbody tr:nth-child(even), plus this one) */
-tbody tr:first-child td {
-  font-weight: 600;
-}
+## Responsive behavior
 
-/* 4. Negation pseudo-class */
-input:not([type="submit"]) {
-  background-color: #fafafa;
-}
+A media query at max-width: 600px adjusts page padding, card padding, border radius, heading sizes, and table cell padding so the layout stays clean on mobile.
 
-/* 5. Focus state for inputs */
-input:focus,
-select:focus {
-  outline: none;
-  border-color: #1f3a5f;
-  box-shadow: 0 0 0 2px rgba(31, 58, 95, 0.15);
-}
+## CSS techniques used
 
-/* 6. Hover state for table rows */
-tbody tr:hover {
-  background-color: #e3f2fd;
-  cursor: pointer;
-}
+### Custom properties
+
+All colors, fonts, radii, and shadows are stored as tokens in :root.
+
+### Element selectors
+
+body, h1, h2, p, label, input, select, table
+
+### Class selectors
+
+.add-expense, .input-group, .help-section, .video-section, .subtitle, .table-wrapper, .expenses-section
+
+### ID selectors
+
+#page-header, #expenses-list, #add-expense-btn
+
+### Advanced selectors
+
+- Descendant: .expenses-section h2
+- Direct child: .add-expense > form > .input-group
+- Positional: tbody tr:nth-child(even), tbody tr:last-child, tbody td:nth-child(2)
+- Negation: input:not([type="submit"])
+- Focus: input:focus, select:focus
+- Hover: tbody tr:hover, #add-expense-btn:hover
+
+## How to view it
+
+1. Clone or download the repository
+2. Open index.html in any modern browser
+3. No build step, no dependencies
+
+## What's coming next
+
+- Week 4 and beyond: layout and responsive refinement
+- Week 6: JavaScript to make the form functional and render expenses dynamically
+- Week 7 and beyond: persistence with localStorage, editing and deleting expenses
+
+## Author
+
+Zakariye Ali Mursal
+PLP 2026
